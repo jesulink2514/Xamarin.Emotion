@@ -16,6 +16,7 @@ namespace Emotion
         private ImageSource _selectedImage;
         private bool _isBusy = false;
         private string _msgString;
+        private float _emotion;
 
         public string Message
         {
@@ -40,6 +41,12 @@ namespace Emotion
             {
                 SetProperty(ref _isBusy,value);
             }
+        }
+
+        public float Emotion
+        {
+            get { return _emotion; }
+            set { SetProperty(ref _emotion,value); }
         }
 
         public EmotionViewModel()
@@ -120,8 +127,8 @@ namespace Emotion
             {
                 SelectedImage = ImageSource.FromStream(() => file.GetStream());
                 var selectedPicStream = file.GetStream();
-                var emotion = await EmotionService.GetAverageHappinessScoreAsync(selectedPicStream);
-                Message = EmotionService.GetHappinessMessage(emotion);
+                Emotion = await EmotionService.GetAverageHappinessScoreAsync(selectedPicStream);
+                Message = EmotionService.GetHappinessMessage(Emotion);
             }
         }
 

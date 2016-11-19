@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utils="clr-namespace:Emotion.Utils;assembly=Emotion"
              x:Class="Emotion.MainPage">
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -9,9 +10,12 @@
         <Setter Property="BorderColor" Value="Blue"/>
         <Setter Property="BorderWidth" Value="2"/>
       </Style>
+      <utils:EmotionToColorConverter x:Key="EmoConv" Happy="Green" Sad="Red"/>
     </ResourceDictionary>
   </ContentPage.Resources>
+  <ScrollView>
 <StackLayout Padding="5">
+  <Image Source="MTDeveloper.png"/>
   <Label Text="Emotion API" FontSize="Large"
          TextColor="Blue"
          HorizontalTextAlignment="Center"></Label>
@@ -20,9 +24,10 @@
   <Button Text="Pick a photo" BackgroundColor="#764CFD"
           Command="{Binding PickPhotoCommand}"></Button>
   <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"/>
-  <Label x:Name="TxtMessage"
-         Text="{Binding Message}"></Label>
+  <Label x:Name="TxtMessage" HorizontalTextAlignment="Center"
+         FontSize="Large" TextColor="{Binding Emotion,Converter={StaticResource EmoConv}}"
+         Text="{Binding Message}" Margin="5"></Label>
   <Image Source="{Binding SelectedImage}"></Image>
 </StackLayout>
-
+  </ScrollView>
 </ContentPage>
