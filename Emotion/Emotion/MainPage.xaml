@@ -3,9 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Emotion"
              x:Class="Emotion.MainPage">
-
-  <Label Text="Welcome to Xamarin Forms!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Button">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="BorderColor" Value="Blue"/>
+        <Setter Property="BorderWidth" Value="2"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+<StackLayout Padding="5">
+  <Label Text="Emotion API" FontSize="Large"
+         TextColor="Blue"
+         HorizontalTextAlignment="Center"></Label>
+  <Button Text="Take a photo" BackgroundColor="#11CAFB"></Button>
+  <Button Text="Pick a photo" BackgroundColor="#764CFD"></Button>
+  <Label x:Name="TxtMessage"></Label>
+  <Image></Image>
+</StackLayout>
 
 </ContentPage>
