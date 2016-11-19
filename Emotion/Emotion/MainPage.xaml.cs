@@ -12,6 +12,7 @@ namespace Emotion
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = new EmotionViewModel();
         }
     }
 }

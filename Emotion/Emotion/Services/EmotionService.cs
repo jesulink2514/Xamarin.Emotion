@@ -10,7 +10,7 @@ namespace Emotion.Services
     {
         private static async Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> GetHappinessAsync(Stream stream)
         {
-            var emotionClient = new EmotionServiceClient("");
+            var emotionClient = new EmotionServiceClient("f69ce3d0341c4ab98441a1f104a4bec2");
 
             var emotionResults = await emotionClient.RecognizeAsync(stream);
 
